@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Initializing the rails postgresql backend
 
-Things you may want to cover:
+#### Installing postgresql 
 
-* Ruby version
+- sudo apt update
+- sudo apt install postgresql postgresql-contrib libpq-dev
+- psql --version
 
-* System dependencies
+#### Starting the postgreqsl service
 
-* Configuration
+- sudo service postgresql start
 
-* Database creation
+#### Starting the project
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- cd into the directory and run `bundle install`
+- `rails db:create`
+- `rails db:migrate`
+- `rails s` 
