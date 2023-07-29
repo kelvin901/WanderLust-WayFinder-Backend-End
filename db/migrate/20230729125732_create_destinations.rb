@@ -5,9 +5,7 @@ class CreateDestinations < ActiveRecord::Migration[7.0]
       t.text :description
       t.text :interests
       t.decimal :budget
-      t.date :travel_dates
-      t.text :past_travel_history
-
+      t.string :location
       t.timestamps
     end
   end

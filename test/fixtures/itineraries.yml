@@ -3,11 +3,7 @@
 one:
   user: one
   destination: one
-  activity: MyString
-  accommodation: MyString
 
 two:
   user: two
   destination: two
-  activity: MyString
-  accommodation: MyString
