@@ -5,17 +5,17 @@ class UsersController < ApplicationController
         user = User.all
         render json: user
     end
-    
-    
+
+
     def create
-     user = User.create(user_params)
-     if user.valid?
-       session[:user_id] = user.id # Save user id in the session
-       render json: user, status: :created
-     else
-       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-     end
-   end
+        user = User.new(user_params)
+    
+        if user.save
+          render json: { message: 'Sign up successful!' }, status: :created
+        else
+          render json: { error: 'Failed to sign up' }, status: :unprocessable_entity
+        end
+      end
  
        def show
          user = User.find_by(id: session[:user_id])
@@ -29,7 +29,35 @@ class UsersController < ApplicationController
        private
      
        def user_params
-         params.permit(:first_name, :last_name, :username, :password)
-       end
-     
+        params.permit(:first_name, :last_name, :username, :email, :password)
+      end
  end
+
+
+# app/controllers/users_controller.rb
+# class UsersController < ApplicationController
+
+ 
+#             # def index                
+#             #      render json: User.all
+#             # end
+
+  
+#     def create
+#       user = User.new(user_params)
+  
+#       if user.valid?
+#         user.save
+#         render json: { message: 'Sign up successful!' }, status: :created
+#       else
+#         render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+#       end
+#     end
+  
+#     private
+  
+#     def user_params
+#       params.permit(:first_name, :last_name, :username, :email, :password)
+#     end
+#   end
+  
