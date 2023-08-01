@@ -6,6 +6,7 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    # CREATE NEW USER 
 
     def create
         user = User.new(user_params)
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
         end
       end
  
+
        def show
          user = User.find_by(id: session[:user_id])
          if user
@@ -26,11 +28,24 @@ class UsersController < ApplicationController
          end
        end
      
-       private
-     
-       def user_params
-        params.permit(:first_name, :last_name, :username, :email, :password)
-      end
+
+        # PATCH /user/:id
+
+        def update
+          user = User.find_by(id: params[:id])
+          if user.update(user_params)
+            render json: user
+          else
+            render json: { error: 'Failed to update user information' }, status: :unprocessable_entity
+          end
+        end
+
+        private
+
+        def user_params
+          params.permit(:first_name, :last_name, :username, :email, :password)
+        end
+        
  end
 
 
