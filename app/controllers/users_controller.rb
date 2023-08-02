@@ -28,6 +28,14 @@ class UsersController < ApplicationController
          end
        end
      
+      # USER COUNT
+
+       def count
+        users = User.all
+        statistics = users.count
+        render json: statistics
+      end
+
 
         # PATCH /user/:id
 
