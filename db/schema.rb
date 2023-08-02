@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_134818) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_081203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attractions", force: :cascade do |t|
+    t.string "attraction_name"
+    t.text "description"
+    t.string "image_1"
+    t.string "image_2"
+    t.string "image_3"
+    t.string "image_4"
+    t.datetime "deadline"
+    t.string "map_url"
+    t.decimal "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "destinations", force: :cascade do |t|
     t.string "name"
