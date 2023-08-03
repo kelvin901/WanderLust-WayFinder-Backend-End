@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_055547) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar"
   end
 
   add_foreign_key "itineraries", "destinations"
