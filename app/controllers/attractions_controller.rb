@@ -32,6 +32,14 @@ class AttractionsController < ApplicationController
        
           
       end
+
+      # attractions count
+
+      def count
+        destinations = Attraction.all
+        statistics = destinations.count
+        render json: statistics
+    end
     
 
     

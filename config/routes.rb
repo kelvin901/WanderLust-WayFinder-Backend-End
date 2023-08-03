@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # patch "/users", to: "users#update"
 
   get "/users_count", to: "users#count"
-
+  get "/destinations_count", to: "attractions#count"
   delete "/logout", to: "sessions#destroy"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
