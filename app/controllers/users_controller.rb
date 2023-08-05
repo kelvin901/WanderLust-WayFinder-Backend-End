@@ -37,24 +37,30 @@ class UsersController < ApplicationController
       end
 
 
-        # PATCH /user/:id
 
-        def update
-          user = User.find_by(id: params[:id])
-          if user.update(user_params)
-            render json: user
-          else
-            render json: { error: 'Failed to update user information' }, status: :unprocessable_entity
-          end
-        end
-
+    # PATCH /users/:id
+    def update
+      user = find_user
+        user.update(user_params)
+        render json: user
+       
+    end
         private
+
+        def find_user
+          User.find(params[:id])
+        end
 
         def user_params
           params.permit(:first_name, :last_name, :username, :email, :password, :avatar)
         end
         
  end
+
+
+
+
+
 
 
 # app/controllers/users_controller.rb
