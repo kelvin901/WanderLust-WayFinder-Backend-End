@@ -1,27 +1,6 @@
 class ItinerariesController < ApplicationController
     before_action :set_itinerary, only: [:show, :edit, :update, :destroy]
   
-    # def index
-    #   @itineraries = Itinerary.all
-    # end
-  
-    # def show
-    # end
-  
-    # def new
-    #   @itinerary = Itinerary.new
-    # end
-  
-    # def create
-    #   @itinerary = Itinerary.new(itinerary_params)
-  
-    #   if @itinerary.save
-    #     redirect_to @itinerary, notice: 'Itinerary was successfully created.'
-    #   else
-    #     render :new
-    #   end
-    # end
-
 
 
      # GET /itineraries
@@ -39,9 +18,16 @@ class ItinerariesController < ApplicationController
     # GET /itineraries/:id
     def show
       itinerary = find_itinerary
-        render json: itinerary
+        render json: itinerary 
      
           
+    end
+
+    # RENDER LOGGED IN USER ITINERARY
+
+    def user_itineraries
+      user_itineraries = Itinerary.where(user_id: params[:user_id])
+      render json: user_itineraries, include: :destination
     end
 
 

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/user", to: "users#show"
   # patch "/users", to: "users#update"
-
+  
+  get '/users/:user_id/itineraries', to: 'itineraries#user_itineraries'
   get "/users_count", to: "users#count"
   get "/destinations_count", to: "attractions#count"
   delete "/logout", to: "sessions#destroy"
