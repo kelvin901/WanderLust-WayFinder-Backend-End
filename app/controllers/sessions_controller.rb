@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.find_by(username: params[:username])
+    user = User.find_by(username: params[:username]) || User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       render json: { user: user.as_json(only: [:id, :username, :admin]) }, status: :created
