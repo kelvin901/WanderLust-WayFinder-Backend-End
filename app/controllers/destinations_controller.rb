@@ -2,25 +2,30 @@ class DestinationsController < ApplicationController
     before_action :set_destination, only: [:show, :edit, :update, :destroy]
   
     def index
-      @destinations = Destination.all
+      destinations = Destination.all
+      render json: destinations
     end
   
-    def show
-    end
+  
+         # GET /attractions/:id
+         def show
+          @destination = find_destination
+            render json: @destination
+         
+              
+        end
   
     def new
       @destination = Destination.new
     end
   
-    def create
-      @destination = Destination.new(destination_params)
-  
-      if @destination.save
-        redirect_to @destination, notice: 'Destination was successfully created.'
-      else
-        render :new
+
+      # POST /attractions
+      def create
+        @destination = Destination.create!(destination_params)
+        render json: @destination, status: :created
       end
-    end
+
   
     def edit
     end
@@ -39,6 +44,11 @@ class DestinationsController < ApplicationController
     end
   
     private
+
+
+    def find_destination
+      Destination.find(params[:id])
+    end
   
     def set_destination
       @destination = Destination.find(params[:id])

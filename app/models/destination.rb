@@ -1,4 +1,5 @@
 class Destination < ApplicationRecord
     # belongs_to :itinerary
-    has_many :Itineraries
+    has_many :itineraries
+    has_many :users, through: :itineraries
 end
