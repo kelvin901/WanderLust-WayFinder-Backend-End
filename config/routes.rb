@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   resources :attractions
   resources :itineraries
   resources :destinations
-  resources :users
+  # resources :users
+
+  resources :users, only: [] do
+    get 'destinations', to: 'destinations#user_destinations'
+    get 'itineraries', to: 'itineraries#user_itineraries'
+  end
 
   post '/signup', to: 'users#create'
   post "/login", to: "sessions#create"

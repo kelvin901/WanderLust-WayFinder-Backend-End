@@ -20,12 +20,20 @@ class DestinationsController < ApplicationController
     end
   
 
-      # POST /attractions
+      # POST /destinations
       def create
         @destination = Destination.create!(destination_params)
         render json: @destination, status: :created
       end
 
+
+       # RENDER LOGGED IN USER DESTINATIONS
+    def user_destinations
+        user_destinations = Destination.where(user_id: params[:user_id])
+       render json: user_destinations
+   end
+
+      
   
     def edit
     end
@@ -55,7 +63,7 @@ class DestinationsController < ApplicationController
     end
   
     def destination_params
-      params.require(:destination).permit(:name, :description, :interests, :budget, :location)
+      params.require(:destination).permit(:name, :description, :interests, :budget, :location, :user_id)
     end
   end
   

@@ -18,18 +18,16 @@ class ItinerariesController < ApplicationController
     # GET /itineraries/:id
     def show
       itinerary = find_itinerary
-        render json: itinerary 
-     
-          
+        render json: itinerary          
     end
 
-    # RENDER LOGGED IN USER ITINERARY
 
-    def user_itineraries
-      user_itineraries = Itinerary.where(user_id: params[:user_id])
-      render json: user_itineraries, include: :destination
-    end
 
+     # RENDER LOGGED IN USER ITINERARY
+  def user_itineraries
+    user_itineraries = Itinerary.where(user_id: params[:user_id]).includes(:destination)
+    render json: user_itineraries, include: :destination
+  end
 
 
     def edit
