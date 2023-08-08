@@ -63,7 +63,7 @@ class DestinationsController < ApplicationController
     end
   
     def destination_params
-      params.require(:destination).permit(:name, :description, :interests, :budget, :location, :user_id)
+      params.require(:destination).permit(:name, :description, :location, :user_id)
     end
   end
   

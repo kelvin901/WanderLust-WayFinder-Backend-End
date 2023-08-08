@@ -57,7 +57,7 @@ class ItinerariesController < ApplicationController
     end
   
     def itinerary_params
-      params.require(:itinerary).permit(:user_id, :destination_id, :date, :time, :activity, :duration)
+      params.require(:itinerary).permit(:user_id, :destination_id, :date, :time, :activity, :duration, :budget)
     end
   end
   
